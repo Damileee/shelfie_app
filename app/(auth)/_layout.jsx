@@ -1,25 +1,13 @@
 import { Stack } from "expo-router"
-import { Colors } from "../../constants/Colors"
-import { useColorScheme } from "react-native"
-import { StatusBar } from "expo-status-bar"
+import { StatusBar } from "react-native"
 
-export default function RootLayout() {
-  const colorScheme = useColorScheme()
-  const theme = Colors[colorScheme] ?? Colors.light
-
+export default function AuthLayout() {
   return (
     <>
-      <StatusBar value="auto" />
-      <Stack screenOptions={{
-        headerStyle: { backgroundColor: theme.navBackground },
-        headerTintColor: theme.title,
-      }}>
-        {/* Groups */}
-        <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-
-        {/* Individual Screens */}
-        <Stack.Screen name="index" options={{ title: "Home" }} />
-      </Stack>
+      <StatusBar style="auto" />
+      <Stack 
+        screenOptions={{ headerShown: false, animation: "none" }} 
+      />
     </>
   )
 }
