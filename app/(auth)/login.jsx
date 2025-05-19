@@ -1,16 +1,20 @@
 import { StyleSheet, Text } from 'react-native'
 import { Link } from 'expo-router'
 import { Colors } from '../../constants/Colors'
+import { useState } from 'react'
 
 import ThemedView from '../../components/ThemedView'
 import ThemedText from '../../components/ThemedText'
 import Spacer from '../../components/Spacer'
 import ThemedButton from '../../components/ThemedButton'
+import ThemedTextInput from '../../components/ThemedTextInput'
 
 const Login = () => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   const handleSubmit = () => {
-    console.log("Login form submitted");
+    console.log("Login form submitted", email, password);
   }
 
   return (
@@ -20,6 +24,22 @@ const Login = () => {
       <ThemedText title={true} style={styles.title}>
         Login to Your Account
       </ThemedText>
+
+      <ThemedTextInput 
+        style={{ width: "80%", marginBottom: 20 }}
+        placeholder='Email' 
+        keyboardType='email-address'
+        onChangeText={setEmail}
+        value={email}
+      />
+
+      <ThemedTextInput
+        style={{ width: "80%", marginBottom: 20 }}
+        placeholder='Password' 
+        secureTextEntry={true}
+        onChangeText={setPassword}
+        value={password}
+      />
 
       <ThemedButton onPress={handleSubmit}>
         <Text style={{ color: '#f2f2f2' }}>Login</Text>
